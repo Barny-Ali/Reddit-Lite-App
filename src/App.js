@@ -1,49 +1,84 @@
 import logo from './logo.svg';
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import Search from './components/Search';
 import { RedditApi } from './components/RedditApi';
+import Posts from './components/Posts';
+import Subreddits from './components/Subreddits';
 
 function App() {
   const [results, setResults] = useState([]);
+  const [pagination, setPagination] = useState({ before: null, after: null, query: '' });
 
-  const performSearch = async (query) => {
-    const data = await RedditApi.searchReddit(query);
+  useEffect(() => {
+    handleSubredditClick("Home"); // Corrected to "Home"
+  }, []);
+
+  const performSearch = async (query, direction = null, paginationHistory = []) => {
+    let { before, after } = pagination;
+
+    if (direction === 'prev' && paginationHistory.length > 0) {
+      const lastEntry = paginationHistory.pop(); 
+      before = lastEntry.before;
+      after = lastEntry.after;
+    } else if (direction === 'next' && pagination.after) {
+      before = pagination.before;
+      after = pagination.after;
+    }
+
+    const data = await RedditApi.searchReddit(query, {
+      before: direction === 'prev' ? after : null,
+      after: direction === 'next' ? after : null,
+    });
+
     if (data) {
+      console.log(data);
       const posts = data.data.children.map((child) => ({
         title: child.data.title,
         url: child.data.url,
+        thumbnail: child.data.thumbnail,
+        author: child.data.author,
+        subreddit: child.data.subreddit_name_prefixed,
+        ups: child.data.ups,
+        created: child.data.created,
+        selftext: child.data.selftext || '',
+        domain: child.data.domain,
+        gallery_data: child.data.gallery_data,
+        media_metadata: child.data.media_metadata,
+        secure_media: child.data.secure_media,
+        is_self: child.data.is_self,
+        post_hint: child.data.post_hint,
       }));
+
+      setPagination({
+        before: data.data.before || after, 
+        after: data.data.after || after,
+        query,
+      });
       setResults(posts);
     }
+  };
+
+  const handleSubredditClick = (subreddit) => {
+    performSearch(`subreddit:${subreddit}`);
   };
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <Search onSearch={performSearch} />
+        <h3>RedditLite</h3>
+        <Search onSearch={(query) => performSearch(query)} />
       </header>
-      <main>
-        <h2>Search Results:</h2>
-        <ul style={{ listStyle: 'none', padding: 0 }}>
-          {results.length > 0 ? (
-            results.map((result, index) => (
-              <li key={index} style={{ margin: '1rem 0' }}>
-                <a
-                  href={result.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ color: '#61dafb' }}
-                >
-                  {result.title}
-                </a>
-              </li>
-            ))
-          ) : (
-            <p>No results yet. Try searching for something!</p>
-          )}
-        </ul>
+      <main className="App-body">
+        <Subreddits onSubredditClick={handleSubredditClick} />
+        <Posts
+          results={results}
+          pagination={pagination}
+          onNavigate={(direction, paginationHistory) =>
+            performSearch(pagination.query, direction, paginationHistory)
+          }
+        />
       </main>
     </div>
   );

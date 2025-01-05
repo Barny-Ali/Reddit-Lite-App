@@ -1,3 +1,13 @@
+:root {
+  --primary-color:rgb(255, 115, 0);
+  --primary-color-dark:rgb(214, 98, 3);
+  --secondary-color:#fff5ef;
+  --standard-dark-color: rgb(44, 44, 44);
+  --standard-light-color: white;
+  --transparent-dark-color: rgba(44, 44, 44, 0.5) ;
+  --transparent-light-color: rgba(255, 255, 255, 0.5) ;
+}
+
 .App {
   text-align: center;
 }
@@ -5,6 +15,7 @@
 .App-logo {
   height: 15vmin;
   pointer-events: none;
+  margin-top: 2rem;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -14,18 +25,37 @@
 }
 
 .App-header {
-  background-color: #fffdf7;
+  background-color: var(--secondary-color);
   min-height: 30vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: black;
+  color: var(--standard-dark-color);
+  gap: 0.5rem;
+  max-width: 100%;
+  margin:0;
+}
+
+.App-body {
+  background-color: var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(5px + 2vmin);
+  color: var(--standard-dark-color);
+  gap: 0.5rem;
+  padding: 1rem;
+  overflow: scroll;
+  scrollbar-width: none;
+  max-width: 100%;
+  margin:0;
 }
 
 .App-link {
-  color: orange;
+  color: var(--primary-color);
 }
 
 @keyframes App-logo-pulse {
@@ -41,4 +71,275 @@
     transform: scale(1);
     opacity: 1;
   }
+}
+
+.Search-section {
+  display: flex;
+}
+
+.Search-section form {
+  display: flex;
+  gap: 0.5rem;
+  font-size: calc(10px + 1vmin);
+  margin: 1rem;
+}
+
+.Search-section form input{
+  border-radius: 0.5rem;
+  background-color: var(--transparent-light-color);
+  color: var(--standard-dark-color);
+  border-color: var(--primary-color);
+  font-size: inherit;
+  width: 70vmin;
+  padding: 0.5rem;
+}
+
+.Search-section form button{
+  border-radius: 0.5rem;
+  background-color: var(--primary-color);
+  color: var(--standard-light-color);
+  border-color: var(--primary-color);
+  font-size: inherit;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+h4{
+  margin:0.5rem;
+}
+
+ul{
+  display:flex;
+  flex-direction: column;
+  list-style: none;
+  margin:0;
+  padding:0;
+}
+
+.Subreddits-section{
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  background-color: var(--transparent-dark-color);
+  border-radius: 2rem;
+  padding: 1rem;
+  min-width: min-content;
+  font-size: calc(5px + 2vmin);;
+  width:95%;
+  margin:0;
+  color: var(--standard-light-color);
+}
+
+.Subreddits-section ul{
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap:0.5rem;
+}
+
+.Subreddit-item {
+  display: flex;
+  border-radius: 0.5rem;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border-color: var(--secondary-color);
+  font-size: inherit;
+  padding: 0.5rem;
+  text-decoration: none;
+}
+
+.Subreddit-item button {
+  text-decoration: none;
+  color: var(--primary-color);
+  cursor: pointer;
+  background-color: transparent;
+  border:none;
+}
+
+.Accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  background-color: transparent;
+  padding: 10px;
+  border-radius: 2rem;
+}
+
+.Accordion-arrow {
+  transform: rotate(180deg);
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+.Accordion-arrow.open {
+  transform: rotate(0deg);
+}
+
+.Accordion-content {
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+  border-top: none;
+  border-radius: 2rem;
+  background-color: transparent;
+}
+
+.Pagination-controls {
+  display: flex;
+  justify-content: space-between;
+  width:90%;
+  margin-top: 1rem;
+  gap:1rem;
+}
+
+.Posts-section{
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  background-color: transparent;
+  border-radius: 2rem;
+  padding: 0;
+  margin:0;
+  min-width: min-content;
+  width:95%;
+  font-size: inherit;
+  align-items: center;
+  justify-content: center;
+}
+
+.Pagination-controls button {
+  padding: 0.5rem 1rem;
+  background-color: var(--transparent-dark-color);
+  color: var(--secondary-color);
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.Pagination-controls button:hover {
+  background-color: var(--primary-color-dark);
+}
+
+.Pagination-controls button:disabled {
+  background-color: var(--transparent-light-color);
+  cursor: not-allowed;
+}
+
+.Post-item{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;    
+  justify-content: center;
+  margin: 1rem 0;
+  background-color: var(--secondary-color);
+  padding: 1rem 3rem;
+  border-radius: 2rem;
+}
+
+.Post-header{
+  display: flex;
+  flex-wrap: no-wrap;
+  flex-direction: row;
+  align-items: flex-start;
+  text-align: left;    
+  justify-content: center;
+  margin: 0;
+  background-color: var(--secondary-color);
+  padding: 1rem;
+  border-radius: 2rem;
+  flex-grow: 0;
+  gap:1rem;
+}
+
+.Post-thumbnail-img{
+  border-radius: 5rem;
+  width:5vh;
+  height:5vh;
+  background-color: black;
+  overflow: hidden;
+  margin:auto;
+}
+
+.Post-thumbnail-img img{
+  width:inherit;
+  height:inherit;
+  object-fit: cover;
+}
+
+.Post-media{
+  display:flex;
+  flex-direction: row;
+  margin:auto;
+  border-radius: 1rem;
+  width:100%;
+  height:50vh;
+  overflow: auto;
+  scrollbar-width: none;
+  gap:0.5rem;
+  background-color: black;
+}
+.Post-media img{
+  width:inherit;
+  height:inherit;
+  object-fit: contain;
+}
+
+.Post-link{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  width:100%;
+  height:inherit;
+  object-fit: contain;
+  overflow: hidden;
+}
+
+.Post-link img{
+  width:50%;
+  height:50%;
+  margin:auto;
+}
+
+.Post-link a{
+  color:white;
+}
+
+.Post-media video{
+  width:inherit;
+  height:inherit;
+  object-fit: contain;
+}
+
+.Post-details {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start; 
+  text-align: left;   
+  justify-content: center;
+  margin: 0;
+  padding: 1rem;
+}
+
+.Post-details i{
+  color: var(--primary-color);
+}
+.Reddit-button {
+  border-radius: 0.5rem;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border-color: var(--primary-color);
+  padding: 0.5rem;
+  text-decoration: none;
+  width: max-content;
+  height: fit-content;
+  font-size: smaller;
+}
+.Post-details p {
+  word-wrap: break-word;
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  max-width: 100%;
 }
