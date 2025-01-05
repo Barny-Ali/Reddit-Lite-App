@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import React, { useState, useEffect  } from 'react';
+import React, { useState, useEffect, useRef   } from 'react';
 import Search from './components/Search';
 import { RedditApi } from './components/RedditApi';
 import Posts from './components/Posts';
@@ -9,6 +9,7 @@ import Subreddits from './components/Subreddits';
 function App() {
   const [results, setResults] = useState([]);
   const [pagination, setPagination] = useState({ before: null, after: null, query: '' });
+  const postsRef = useRef(null);
 
   useEffect(() => {
     handleSubredditClick("Home"); // Corrected to "Home"
@@ -57,6 +58,8 @@ function App() {
       });
       setResults(posts);
     }
+
+    postsRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleSubredditClick = (subreddit) => {
@@ -72,6 +75,7 @@ function App() {
       </header>
       <main className="App-body">
         <Subreddits onSubredditClick={handleSubredditClick} />
+        <div ref={postsRef}>
         <Posts
           results={results}
           pagination={pagination}
@@ -79,6 +83,7 @@ function App() {
             performSearch(pagination.query, direction, paginationHistory)
           }
         />
+        </div>
       </main>
     </div>
   );
