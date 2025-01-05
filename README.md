@@ -1,70 +1,128 @@
-# Getting Started with Create React App
+# Reddit Lite App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+Reddit Lite App is a lightweight and user-friendly application that allows users to explore Reddit posts and subreddits seamlessly. With powerful search and browsing capabilities, users can view detailed post content, including images, videos, gifs, and article links. All data is fetched in real-time using the Reddit JSON API.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Search for Posts**: Search for specific posts across Reddit.
+- **Browse Subreddits**: Navigate through various subreddits to explore different topics.
+- **View Post Details**: Access in-depth details of each post, including media and metadata.
+- **Media Support**:
+  - Display images, videos, and gifs directly in the app.
+  - View article links in an external browser.
+- **Real-Time Data Fetching**: Fetches up-to-date information from the Reddit JSON API for a seamless experience.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies Used
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **React**: For building the user interface.
+- **React Router**: For managing navigation and routes.
+- **Reddit JSON API**: To fetch post and subreddit data.
+- **CSS/SCSS**: For styling the application.
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository:
 
-### `npm run build`
+   ```bash
+   git clone https://github.com/barny-ali/Reddit-Lite-App.git
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Navigate to the project directory:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   cd Reddit-Lite-App
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Install dependencies:
 
-### `npm run eject`
+   ```bash
+   npm install
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4. Start the development server:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```bash
+   npm start
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+5. Open your browser and navigate to:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   ```
+   http://localhost:3000
+   ```
 
-## Learn More
+## Deployment
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The app is deployed via GitHub Pages. To deploy your changes:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Build the app:
 
-### Code Splitting
+   ```bash
+   npm run build
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. Deploy to GitHub Pages:
 
-### Analyzing the Bundle Size
+   ```bash
+   npm run deploy
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+3. Access the deployed app at:
 
-### Making a Progressive Web App
+   ```
+   https://barny-ali.github.io/Reddit-Lite-App/
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## How to Use
 
-### Advanced Configuration
+1. **Search for Posts**: Enter keywords in the search bar to find relevant posts.
+2. **Browse Subreddits**: Use the navigation menu to explore various subreddits.
+3. **View Media**:
+   - Images are displayed directly in posts.
+   - Videos and gifs are playable within the app.
+   - Article links redirect to the respective external sites.
+4. **Post Details**: Click on any post to view detailed content and metadata.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## API Reference
 
-### Deployment
+The app uses the Reddit JSON API for data:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Base URL: `https://www.reddit.com`
+- Endpoints used:
+  - `/search.json`: For searching posts.
+  - `/r/{subreddit}.json`: For subreddit content.
 
-### `npm run build` fails to minify
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Contributions are welcome! To contribute:
+
+1. Fork the repository.
+2. Create a new branch for your feature:
+   ```bash
+   git checkout -b feature-name
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m "Add feature description"
+   ```
+4. Push to your branch:
+   ```bash
+   git push origin feature-name
+   ```
+5. Open a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- Reddit for providing the JSON API.
+- React community for their excellent tools and support.
+
+---
+
+Explore Reddit like never before with Reddit Lite App! 🚀
+
