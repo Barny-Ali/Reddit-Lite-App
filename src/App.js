@@ -75,7 +75,7 @@ function App() {
       </header>
       <main className="App-body">
         <Subreddits onSubredditClick={handleSubredditClick} />
-        <div ref={postsRef}>
+        <div ref={postsRef}  className="App-body">
         <Posts
           results={results}
           pagination={pagination}
